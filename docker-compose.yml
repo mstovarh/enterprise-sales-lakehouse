@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+
+  postgres:
+  image: postgres:16
+  container_name: esl-postgres
+  restart: unless-stopped
+
+  environment:
+    POSTGRES_USER: admin
+    POSTGRES_PASSWORD: admin123
+    POSTGRES_DB: enterprise_sales
+
+  ports:
+    - "5432:5432"
+
+  volumes:
+    - postgres_data:/var/lib/postgresql/data
+    - ./docker/postgres/init:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+    container_name: esl-pgadmin
+
+    restart: unless-stopped
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@enterprise.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+
+    ports:
+      - "5050:80"
+
+    depends_on:
+      - postgres
+
+  minio:
+    image: minio/minio
+
+    container_name: esl-minio
+
+    command: server /data --console-address ":9001"
+
+    restart: unless-stopped
+
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin123
+
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+    volumes:
+      - minio_data:/data
+
+volumes:
+
+  postgres_data:
+
+  minio_data:
