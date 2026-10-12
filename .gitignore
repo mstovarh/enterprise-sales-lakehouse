@@ -1,0 +1,31 @@
+# Environment / secrets
+.env
+.env.*
+airflow/.env.airflow
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Airflow
+airflow/logs/
+
+# dbt
+**/target/
+**/logs/
+
+# DuckDB
+*.duckdb
+*.duckdb.wal
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: silver
+    description: "Datos Silver almacenados como Parquet en MinIO"
+
+    tables:
+      - name: orders
+        description: "Órdenes de clientes"

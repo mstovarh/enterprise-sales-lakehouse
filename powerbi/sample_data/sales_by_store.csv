@@ -1,0 +1,4 @@
+store_id,store_name,store_city,region,total_orders,total_units,total_sales,average_line_sales
+2,NovaRetail Medellín,Medellín,Andina,1,1,1399000.00,1399000.0
+1,NovaRetail Bogotá Centro,Bogotá,Andina,2,5,2908600.00,727150.0
+3,NovaRetail Online,Bogotá,Nacional,1,2,2198900.00,1099450.0
